@@ -2,8 +2,8 @@
 using namespace std;
 using std::cout;
 //#define DEC_TO_BIN
-#define DEC_TO_HEX
-
+//#define DEC_TO_HEX
+#define DEC_TO_HEX_CW
 
 void main()
 {
@@ -57,7 +57,7 @@ void main()
 		case 13: cout << 'D'; break;
 		case 14: cout << 'E'; break;
 		case 15: cout << 'F'; break;
-		
+
 		}
 
 		if (j % 8 == 0)cout << "  ";
@@ -66,7 +66,41 @@ void main()
 	}
 #endif // DEC_TO_HEX
 
+#ifdef DEC_TO_HEX_CW
+	int decimal;
+	const int n = 8;//Максимальна разрядность HEX числа
+	int hex[n] = {};
+	cout << "Введите десятичное число: "; cin >> decimal;
+	int i = 0;
+	for (; decimal;)
+	{
+		hex[i] = decimal % 16;
+		decimal /= 16;
+		i++;
+	}
 
+	for (--i; i >= 0; i--)
+	{
+		/*switch (hex[i])
+		{
+		case 10: cout << 'A'; break;
+		case 11: cout << 'B'; break;
+		case 12: cout << 'C'; break;
+		case 13: cout << 'D'; break;
+		case 14: cout << 'E'; break;
+		case 15: cout << 'F'; break;
+		default:cout << hex[i];
+
+		}*/
+		/*if (hex[i] < 10) cout << hex[i];
+		else cout << char(hex[i] + 55);*/
+
+		cout << char(hex[i] < 10 ? hex[i] + 48 : hex[i] + 55);
+
+
+	}
+
+#endif // DEC_TO_HEX_CW
 
 
 }
